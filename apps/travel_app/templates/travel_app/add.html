@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+	<meta charset="utf-8">
+	<title>Add Plan</title>
+</head>
+<body>
+	<a href="{% url 'travel:travels' %}">Home</a>
+	<a href="{% url 'travel:logout' %}">Logout</a>
+	{% if messages %}
+		{% for error in messages %}
+			<p>{{ error }}</p>
+		{% endfor %}
+	{% endif %}
+	<h2>Add a Trip</h2>
+	<form action='/post_trip' method='post'>
+		{% csrf_token %}
+		<p><b>Destination: </b><input type='text' name='destination'></p>
+		<p><b>Description: </b><input type='text' name='description'></p>
+		<p><b>Travel Date From: </b><input type='date' name='travel_date_from'></p>
+		<p><b>Travel Date To: </b><input type='date' name='travel_date_to'></p>
+		<p><input type='submit' value='Add'></p>
+	</form>
+</body>
+</html>
